@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC JS Youtube</title>
+</head>
+
+<body>
+    <h1>Calculateur d'IMC :</h1>
+    <p>Veuillez saisir votre poids (en kg) : <input type="number" id="inputPoids" value="80"></p>
+    <p>Veuillez saisir votre taille (en cm) : <input type="number" id="inputTaille" value="180"></p>
+    <button onclick="calculerImc()">Cliquer ici pour calculer votre IMC</button>
+    <p id="resultat"></p>
+    <p id="interpretation"></p>
+</body>
+
+<script>
+    function calculerImc() {
+        let poids = inputPoids.value;
+        let taille = (inputTaille.value) / 100;
+        let imc = Math.round(poids / (taille * taille));
+
+        resultat.innerHTML = "Le score de votre IMC est " + imc;
+        if (imc > 30) {
+            interpretation.innerHTML = "Attention, un score de " + imc +
+                " indique selon l'OMS, que vous êtes en situation d'obésité.";
+        } else if (imc > 25) {
+            interpretation.innerHTML = "Selon l'OMS, un score de " + imc + " d'IMC indique une situation de surpoids.";
+        } else if (imc > 18) {
+            interpretation.innerHTML = "Selon l'OMS, un score de " + imc +
+                " d'IMC vous place dans la norme recommandée."
+        } else {
+            interpretation.innerHTML = "Attention, un score de " + imc +
+                " est considéré par l'OMS comme indicateur de maigreur excessive."
+        }
+
+    }
+</script>
+
+</html>
